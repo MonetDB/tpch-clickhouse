@@ -14,6 +14,8 @@ Depending on the installation method, you might have separate biaries for the se
 
 The previous commands actually create the database sf3 and loads the schema for the TPCH table layout. We still need to generate the data (this must be done with the scripts provided by the official TPCH organization, that can be found [here](https://tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request5.asp?bm_type=TPC-H&bm_vers=3.0.0&mode=CURRENT-ONLY))
 
+Once you have generated the data for the scale factor you are going to execute, you can run the following script `ch_horizontal_run.sh` so as to execute the different queries. By default, each query is run 3 times to account for cold start effects. The mean, min and max execution times are printed an stored into a `timings.csv` file.
+
 ## Issues 
 
 By default, the client only waits for 300s for a query response from the server. Since queries 7 and 19 did not actually end for a Scale Factor of 3. You might need increase timeout creating the following file via `vim ~/.clickhouse-client/config.xml` and adding:
